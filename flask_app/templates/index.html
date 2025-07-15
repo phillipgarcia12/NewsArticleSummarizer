@@ -5,20 +5,28 @@
 </head>
 <body>
     <h1>Article Summarizer</h1>
+
     <form method="post">
         <input type="text" name="article_url" size="60" placeholder="Paste news article URL here..." required><br><br>
         <button type="submit">Summarize</button>
     </form>
 
-
     {% if summary %}
-        <h2>Summary:</h2>
-        <p>{{ summary }}</p>
+        <hr>
+        <h2>Summary</h2>
+        <p><strong>📰 Headline:</strong> {{ metadata.title }}</p>
+        <p><strong>✍️ Author:</strong> {{ metadata.author }}</p>
+        <p><strong>📅 Date:</strong> {{ metadata.date }}</p>
+        <p><strong>🌐 Source:</strong> <a href="{{ metadata.source_url }}" target="_blank">{{ metadata.source }}</a></p>
+        <div style="margin-top: 15px; white-space: pre-wrap; font-size: 1.2em; line-height: 1.6;">
+            {{ summary }}
+        </div>
     {% endif %}
 
     {% if error %}
-        <h2>Error:</h2>
-        <p style="color:red;">{{ error }}</p>
+        <hr>
+        <h2>Error</h2>
+        <p style="color: red;">{{ error }}</p>
     {% endif %}
 </body>
 </html>
