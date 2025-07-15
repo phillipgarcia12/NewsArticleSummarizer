@@ -6,13 +6,19 @@
 <body>
     <h1>Article Summarizer</h1>
     <form method="post">
-        <textarea name="article_text" rows="10" cols="60" placeholder="Paste article text here..."></textarea><br><br>
+        <input type="text" name="article_url" size="60" placeholder="Paste news article URL here..." required><br><br>
         <button type="submit">Summarize</button>
     </form>
+
 
     {% if summary %}
         <h2>Summary:</h2>
         <p>{{ summary }}</p>
+    {% endif %}
+
+    {% if error %}
+        <h2>Error:</h2>
+        <p style="color:red;">{{ error }}</p>
     {% endif %}
 </body>
 </html>
